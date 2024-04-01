@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/User/Desktop/Study/Parallel computing/lab1/main.cpp
+iostream
+-
+chrono
+-
+thread
+-
+vector
+-
+cstdlib
+-
+ctime
+-
+
