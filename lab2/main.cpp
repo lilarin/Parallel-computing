@@ -1,7 +1,7 @@
 #include "task_manager.h"
 #include <random>
 
-std::mutex taskMutex;
+std::mutex taskNumberMutex;
 int nextTaskNumber = 1;
 
 class TaskManagerThread : public std::thread {
@@ -9,14 +9,14 @@ public:
     explicit TaskManagerThread(TaskManager& manager) : std::thread(&TaskManagerThread::run, this, std::ref(manager)) {}
 
     void run(TaskManager& manager) {
-        for (int i = 1; i <= getRandomValue(10, 15); ++i) {
+        for (int i = 1; i <= getRandomValue(15, 20); ++i) {
             int taskNumber;
             {
-                std::lock_guard<std::mutex> lock(taskMutex);
+                std::lock_guard<std::mutex> lock(taskNumberMutex);
                 taskNumber = nextTaskNumber++;
             }
             manager.addTask(taskNumber);
-            std::this_thread::sleep_for(std::chrono::seconds(getRandomValue(2, 4)));
+            std::this_thread::sleep_for(std::chrono::seconds(getRandomValue(1, 2)));
         }
     }
 
@@ -73,16 +73,15 @@ int main() {
     std::this_thread::sleep_for(std::chrono::seconds(10));
 
     threadPoolManager.resume();
-    std::this_thread::sleep_for(std::chrono::seconds(35));
+    std::this_thread::sleep_for(std::chrono::seconds(60));
+
+    threadPoolManager.stop();
 
     for (auto& thread : taskManagerThreads) {
         if (thread.joinable()) {
             thread.join();
         }
     }
-
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    threadPoolManager.stop();
 
     if (poolThread.joinable()) {
         poolThread.join();
