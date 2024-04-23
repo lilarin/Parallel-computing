@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab4/client.cpp
+iostream
+-
+winsock2.h
+-
+utils.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab4/utils.h
+protocol.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab4/protocol.h
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab4/protocol.h
+vector
+-
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab4/utils.h
+random
+-
+iostream
+-
+vector
+-
+

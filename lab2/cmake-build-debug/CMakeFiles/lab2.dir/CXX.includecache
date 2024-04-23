@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/main.cpp
+task_manager.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/task_manager.h
+random
+-
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/task_manager.h
+task_queue.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/task_queue.h
+thread_pool.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/thread_pool.h
+iostream
+-
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/task_queue.h
+queue
+-
+shared_mutex
+-
+mutex
+-
+timestamp.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/timestamp.h
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/thread_pool.h
+task_queue.h
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/task_queue.h
+iostream
+-
+condition_variable
+-
+random
+-
+
+C:/Users/User/Desktop/Study/Parallel-computing/lab2/timestamp.h
+iomanip
+-
+
