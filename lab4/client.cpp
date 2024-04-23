@@ -108,7 +108,7 @@ int main() {
     }
 
     std::cout << "Connected to the server!" << std::endl;
-    
+
     sendData(socket_fd);
     startCloudComputing(socket_fd);
     getData(socket_fd);
