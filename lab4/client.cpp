@@ -42,11 +42,9 @@ void startCloudComputing(SOCKET socket_fd) {
 }
 
 void getData(SOCKET socket_fd) {
-    // Request data
     Request request = Request::GetData;
-    // Receive response
-    Response response;
     send(socket_fd, reinterpret_cast<const char*>(&request), sizeof(Request), 0);
+    Response response;
 
     while (true) {
         recv(socket_fd, reinterpret_cast<char*>(&response), sizeof(Response), 0);
@@ -55,7 +53,6 @@ void getData(SOCKET socket_fd) {
             std::cout << "Server has started computation." << std::endl;
         }
         else if (response == Response::DataProcessed) {
-            // Receive result
             std::vector<int> result(MATRIX_SIZE * MATRIX_SIZE);
             std::cout << "Receiving result from the server..." << std::endl;
             recv(socket_fd, reinterpret_cast<char *>(result.data()), sizeof(int) * MATRIX_SIZE * MATRIX_SIZE, 0);
@@ -111,8 +108,7 @@ int main() {
     }
 
     std::cout << "Connected to the server!" << std::endl;
-
-    // Example usage
+    
     sendData(socket_fd);
     startCloudComputing(socket_fd);
     getData(socket_fd);

@@ -16,7 +16,6 @@ void closeConnection (SOCKET client_socket) {
 }
 
 void receiveData(SOCKET client_socket, std::vector<int>& matrix1, std::vector<int>& matrix2) {
-    // Receive matrix 1
     std::cout << "Receiving matrix 1 from client..." << std::endl;
     int bytesReceived = recv(client_socket, reinterpret_cast<char*>(matrix1.data()), sizeof(int) * MATRIX_SIZE * MATRIX_SIZE, 0);
     if (bytesReceived != sizeof(int) * MATRIX_SIZE * MATRIX_SIZE) {
@@ -26,7 +25,6 @@ void receiveData(SOCKET client_socket, std::vector<int>& matrix1, std::vector<in
     std::cout << "Matrix 1 received." << std::endl;
     Utility::printMatrix(matrix1, MATRIX_SIZE);
 
-    // Receive matrix 2
     std::cout << "Receiving matrix 2 from client..." << std::endl;
     recv(client_socket, reinterpret_cast<char*>(matrix2.data()), sizeof(int) * MATRIX_SIZE * MATRIX_SIZE, 0);
     std::cout << "Matrix 2 received." << std::endl;

@@ -4,7 +4,6 @@
 #include <vector>
 
 enum class Request {
-    SendMatrixSize,
     SendData,
     StartComputing,
     GetData,
@@ -14,10 +13,6 @@ enum class Request {
 enum class Response {
     Processing,
     DataProcessed
-};
-
-struct MatrixSize {
-    int size;
 };
 
 #endif // PROTOCOL_H
