@@ -76,10 +76,10 @@ void endConnection(SOCKET socket_fd) {
 int main() {
     WSADATA wsaData;
     SOCKET socket_fd;
-    struct sockaddr_in server_address;
+    struct sockaddr_in server_address{};
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        std::cout << "Failed to initialize Winsock" << std::endl;
+        std::cout << "Failed to initialize socket" << std::endl;
         return 1;
     }
 

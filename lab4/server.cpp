@@ -49,7 +49,7 @@ void computeData(SOCKET client_socket, std::vector<int>& result,
         thread.join();
     }
 
-    std::cout << "Data processed." << std::endl;
+    std::cout << "Data processed. Result:" << std::endl;
     Utility::printMatrix(result, MATRIX_SIZE);
 
     response = Response::DataProcessed;
@@ -104,7 +104,7 @@ void handleClient(SOCKET client_socket) {
 int main() {
     WSADATA wsaData;
     SOCKET server_socket, client_socket;
-    struct sockaddr_in server_address, client_address;
+    struct sockaddr_in server_address{}, client_address{};
     int client_address_len = sizeof(client_address);
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
