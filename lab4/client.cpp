@@ -36,7 +36,7 @@ void startCloudComputing(SOCKET socket_fd) {
     Response response;
     recv(socket_fd, reinterpret_cast<char*>(&response), sizeof(Response), 0);
 
-    if (response == Response::Processing) {
+    if (response == Response::StartedProcessing) {
         std::cout << "Server has started computing data." << std::endl;
     }
 }
@@ -52,7 +52,7 @@ void getData(SOCKET socket_fd) {
         if (response == Response::Processing) {
             std::cout << "Server has started computation." << std::endl;
         }
-        else if (response == Response::DataProcessed) {
+        else if (response == Response::Processed) {
             std::vector<int> result(MATRIX_SIZE * MATRIX_SIZE);
             std::cout << "Receiving result from the server..." << std::endl;
             recv(socket_fd, reinterpret_cast<char *>(result.data()), sizeof(int) * MATRIX_SIZE * MATRIX_SIZE, 0);
@@ -79,7 +79,7 @@ int main() {
     struct sockaddr_in server_address{};
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        std::cout << "Failed to initialize socket" << std::endl;
+        std::cout << "Failed to initialize WinSock lib" << std::endl;
         return 1;
     }
 

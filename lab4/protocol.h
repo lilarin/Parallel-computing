@@ -11,8 +11,9 @@ enum class Request {
 };
 
 enum class Response {
+    StartedProcessing,
     Processing,
-    DataProcessed
+    Processed
 };
 
 #endif // PROTOCOL_H

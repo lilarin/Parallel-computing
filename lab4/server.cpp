@@ -38,7 +38,7 @@ void computeData(SOCKET client_socket, std::vector<int>& result,
                  const std::vector<int>& matrix1, const std::vector<int>& matrix2) {
     std::vector<std::thread> threads;
 
-    Response response = Response::Processing;
+    Response response = Response::StartedProcessing;
     send(client_socket, reinterpret_cast<const char*>(&response), sizeof(Response), 0);
 
     for (int i = 0; i < NUM_THREADS; ++i) {
@@ -52,7 +52,7 @@ void computeData(SOCKET client_socket, std::vector<int>& result,
     std::cout << "Data processed. Result:" << std::endl;
     Utility::printMatrix(result, MATRIX_SIZE);
 
-    response = Response::DataProcessed;
+    response = Response::Processed;
     send(client_socket, reinterpret_cast<const char*>(&response), sizeof(Response), 0);
 }
 
@@ -108,7 +108,7 @@ int main() {
     int client_address_len = sizeof(client_address);
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        std::cout << "Failed to initialize socket" << std::endl;
+        std::cout << "Failed to initialize WinSock lib" << std::endl;
         return 1;
     }
 
