@@ -3,7 +3,7 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 
 
-def handle_request(client_socket, client_address):
+def handle_request(client_socket):
     with client_socket:
         request = client_socket.recv(1024).decode('utf-8')
         if not request:
@@ -58,7 +58,7 @@ def main():
             while True:
                 client_socket, client_address = server_socket.accept()
 
-                executor.submit(handle_request, client_socket, client_address)
+                executor.submit(handle_request, client_socket)
 
 
 if __name__ == "__main__":
